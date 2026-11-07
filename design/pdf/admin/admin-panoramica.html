@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="it"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=DM+Sans:wght@400;500;600;700;800&family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Jost:wght@400;500;600;700&family=Bodoni+Moda:wght@500;600;700&family=Manrope:wght@400;500;600;700;800&family=Unbounded:wght@400;600;700&family=Nunito+Sans:wght@400;600;700;800&display=swap">
+<link rel="stylesheet" href="../site/base.css"><link rel="stylesheet" href="admin.css"><script src="../site/common.js"></script><script src="admin.js"></script><title>Dashboard · Panoramica</title></head><body>
+<div class="app"><div id="sb"></div><main class="main"><div id="top"></div>
+  <div class="kpis">
+    <div class="kpi"><span>Vendite di novembre</span><b>€ 4.860</b><small>+18% rispetto a ottobre</small></div>
+    <div class="kpi"><span>Ordini</span><b>62</b><small>+9 rispetto a ottobre</small></div>
+    <div class="kpi"><span>Scontrino medio</span><b>€ 78,40</b><small>+€ 6,10</small></div>
+    <div class="kpi"><span>Margine medio</span><b>46%</b><small class="dn">-2 punti</small></div>
+  </div>
+  <div class="row2">
+    <div class="pane"><h2>Vendite ultimi 14 giorni <span class="leg"><span><i></i>Abbigliamento</span><span><i class="c2"></i>Cosmetici</span></span></h2>
+      <div class="chart" id="ch"></div><div class="cl" id="cl"></div></div>
+    <div class="pane"><h2>Da fare oggi</h2><div class="todo" id="todo"></div></div>
+  </div>
+  <div class="row2 eq">
+    <div class="pane"><h2>Più venduti del mese <span class="lk">Tutti</span></h2><div class="top5" id="t5"></div></div>
+    <div class="pane"><h2>Margini per categoria <small>costo d'acquisto inserito nei prodotti</small></h2>
+      <div class="split"><i style="width:58%"></i><i class="c2" style="width:42%"></i></div>
+      <div class="leg"><span><i></i>Abbigliamento 58% · € 2.820</span><span><i class="c2"></i>Cosmetici 42% · € 2.040</span></div>
+      <table class="rt"><thead><tr><th>Categoria</th><th class="n">Venduto</th><th class="n">Costo</th><th class="n">Margine</th></tr></thead><tbody>
+        <tr><td>Abiti</td><td class="n" data-l="Venduto">€ 1.640</td><td class="n hide-m">€ 870</td><td class="n" data-l="Margine"><b>47%</b></td></tr>
+        <tr><td>Giacche e cappotti</td><td class="n" data-l="Venduto">€ 720</td><td class="n hide-m">€ 410</td><td class="n" data-l="Margine"><b>43%</b></td></tr>
+        <tr><td>Skincare viso</td><td class="n" data-l="Venduto">€ 1.310</td><td class="n hide-m">€ 640</td><td class="n" data-l="Margine"><b>51%</b></td></tr>
+        <tr><td>Make-up</td><td class="n" data-l="Venduto">€ 730</td><td class="n hide-m">€ 420</td><td class="n" data-l="Margine"><b>42%</b></td></tr>
+      </tbody></table></div>
+  </div>
+</main></div>
+<script>
+shell('pan','Buongiorno Layne','Sabato 7 novembre · ecco com\'è andata','<span class="srch">'+ICON.search+'Cerca ordini, prodotti, clienti</span><span class="b">'+ICON.plus+'Nuovo prodotto</span>');
+var a=[22,30,18,40,35,26,48,38,30,52,44,36,58,46],c=[16,20,14,26,30,18,28,34,22,30,36,24,40,32],h='';
+for(var i=0;i<14;i++)h+='<div><i class="c2" style="height:'+c[i]*2.2+'px"></i><i style="height:'+a[i]*2.2+'px"></i></div>';
+fill('ch',h); var l='';for(var i=0;i<14;i++)l+='<span>'+(25+i>31?(25+i-31):(25+i))+'</span>';fill('cl',l);
+fill('todo',[['5','ordini da spedire','#'],['3','prodotti sotto la scorta minima',''],['2','richieste di reso da approvare',''],['14','clienti in lista d\'attesa per prodotti esauriti','']].map(function(x){return '<div class="td"><b>'+x[0]+'</b><span>'+x[1]+'</span>'+ICON.chev+'</div>';}).join(''));
+fill('t5',[['siero-vitc','24 venduti','€ 717,60'],['abito-rosso','11 venduti','€ 713,90'],['crema','18 venduti','€ 592,20'],['trench','6 venduti','€ 539,40'],['palette','12 venduti','€ 418,80']].map(function(x){return '<div class="tp"><img src="'+IMG(x[0])+'" alt=""><span><b>'+P[x[0]][0]+'</b><span>'+x[1]+'</span></span><b class="n">'+x[2]+'</b></div>';}).join(''));
+</script></body></html>

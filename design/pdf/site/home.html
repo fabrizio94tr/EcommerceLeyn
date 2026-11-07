@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="it"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=DM+Sans:wght@400;500;600;700;800&family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Jost:wght@400;500;600;700&family=Bodoni+Moda:wght@500;600;700&family=Manrope:wght@400;500;600;700;800&family=Unbounded:wght@400;600;700&family=Nunito+Sans:wght@400;600;700;800&display=swap">
+<link rel="stylesheet" href="base.css"><script src="common.js"></script><title>Alana Beauty · Home</title></head>
+<body>
+<div id="hdr"></div>
+<section class="hero"><div class="wrap"><div class="hbox">
+  <div class="ht">
+    <span class="k">Nuova collezione autunno</span>
+    <h1 class="H" id="htitle"></h1>
+    <p>Abiti, maglieria e la tua beauty routine in un unico posto. Spedizione gratuita sopra € 49.</p>
+    <div class="bts"><span class="btn">Shop abbigliamento</span><span class="btn ghost">Shop cosmetici</span></div>
+    <div class="dots"><i class="on"></i><i></i><i></i></div>
+  </div>
+  <div class="hi"><img id="himg" src="" alt=""><img class="h2" id="himg2" src="" alt=""></div>
+</div></div></section>
+<section class="perks"><div class="wrap" id="perks"></div></section>
+<section class="macro"><div class="wrap">
+  <div class="mtile"><img src="../../src/img/h-stender.jpg" alt="" style="object-position:center 40%"><div class="tx"><span class="k" style="color:#fff">Abbigliamento donna</span><h2 class="H">Il tuo stile, ogni giorno</h2><div class="subs"><span>Abiti</span><span>Top e camicie</span><span>Pantaloni</span><span>Giacche</span><span>Maglieria</span></div><span class="btn">Scopri</span></div></div>
+  <div class="mtile"><img src="../../src/img/h-pennelli.jpg" alt=""><div class="tx"><span class="k" style="color:#fff">Cosmetici</span><h2 class="H">Skincare e make-up</h2><div class="subs"><span>Viso</span><span>Occhi</span><span>Labbra</span><span>Corpo</span><span>Accessori</span></div><span class="btn">Scopri</span></div></div>
+</div></section>
+<section class="shelf"><div class="wrap">
+  <div class="sec-h"><h2 class="H">Novità della settimana</h2><div class="tabs"><span class="on">Tutto</span><span>Abbigliamento</span><span>Cosmetici</span></div><span class="lnk">Vedi tutte</span></div>
+  <div class="grid" id="g1"></div>
+</div></section>
+<section class="band"><div class="wrap"><div class="box">
+  <div class="tx"><span class="k">Promo della settimana</span><h2 class="H">-20% su tutta la skincare viso</h2><p>Sieri, creme e detergenti in promozione fino a domenica. Lo sconto si applica da solo nel carrello.</p><span class="code">SKIN20</span><span class="btn">Approfitta ora</span></div>
+  <div class="bimg"><img src="../../src/img/h-crema.jpg" alt="" style="object-position:center 60%"></div>
+</div></div></section>
+<section class="shelf"><div class="wrap">
+  <div class="sec-h"><h2 class="H">Più amati: cosmetici</h2><span class="lnk">Tutti i cosmetici</span></div>
+  <div class="grid" id="g2"></div>
+</div></section>
+<section class="shelf"><div class="wrap">
+  <div class="sec-h"><h2 class="H">In evidenza: abiti</h2><span class="lnk">Tutti gli abiti</span></div>
+  <div class="grid" id="g3"></div>
+</div></section>
+<section class="shelf blogs"><div class="wrap">
+  <div class="sec-h"><h2 class="H">Beauty blog</h2><span class="lnk">Tutti gli articoli</span></div>
+  <div class="grid">
+    <article class="post"><div class="pi"><img src="../../src/img/h-crema.jpg" alt=""></div><span class="k">Skincare</span><h3 class="H">Come scegliere la crema giusta per la tua pelle</h3><p>Pelle secca, mista o grassa: la guida semplice in 4 passi.</p></article>
+    <article class="post"><div class="pi"><img src="../../src/img/h-trucco.jpg" alt=""></div><span class="k">Make-up</span><h3 class="H">Trucco occhi luminoso in 5 minuti</h3><p>Palette, illuminante e un solo pennello.</p></article>
+    <article class="post"><div class="pi"><img src="../../src/img/h-floreale.jpg" alt=""></div><span class="k">Stile</span><h3 class="H">Abiti di stagione: come abbinarli</h3><p>Tre look facili dal giorno alla sera.</p></article>
+  </div>
+</div></section>
+<div id="ftr"></div>
+<script>
+var T = AB_THEME;
+fill('hdr', header(''));
+fill('htitle', {a:'Brilla con <em>il tuo</em> stile', b:'La bellezza è nei dettagli', c:'Nuova stagione. Nuova te.', d:'Colore, pelle <em>e stile</em>'}[T]);
+document.getElementById('himg').src = IMG({a:'h-denim', b:'h-trench', c:'h-viola', d:'h-ritratto'}[T]);
+document.getElementById('himg2').src = IMG({a:'h-denim', b:'h-trench', c:'h-siero', d:'h-capelli'}[T]);
+fill('perks', perks());
+fill('g1', cards(['abito-pizzo', 'siero-vitc', 'pantalone-rosa', 'rossetto']));
+fill('g2', cards(['siero-viso', 'crema', 'palette', 'illuminante']));
+fill('g3', cards(['abito-floreale', 'abito-rosso', 'abito-viola', 'abito-bianco']));
+fill('ftr', footer());
+</script>
+</body></html>

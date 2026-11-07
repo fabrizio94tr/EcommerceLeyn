@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="it"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=DM+Sans:wght@400;500;600;700;800&family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Jost:wght@400;500;600;700&family=Bodoni+Moda:wght@500;600;700&family=Manrope:wght@400;500;600;700;800&family=Unbounded:wght@400;600;700&family=Nunito+Sans:wght@400;600;700;800&display=swap">
+<link rel="stylesheet" href="base.css"><script src="common.js"></script><title>Alana Beauty · Ordine confermato</title></head>
+<body>
+<div id="hdr"></div>
+<div class="wrap">
+  <div class="ok-h"><span class="tick" id="tk"></span><h1 class="H">Grazie Giulia, il tuo ordine è confermato!</h1><p>Ti abbiamo inviato la conferma a <b>giulia.r@email.it</b>. Riceverai un'altra email con il codice di tracking appena il pacco parte.</p><span class="ono">Ordine n. AB-1042</span></div>
+  <div class="track" id="tr"></div>
+  <div class="ok-g">
+    <div class="ibox">
+      <h3>Riepilogo</h3>
+      <div id="items" style="display:flex;flex-direction:column;gap:14px"></div>
+      <div class="tot"><div><span>Subtotale</span><span>€ 114,70</span></div><div class="disc"><span>Sconto BENVENUTA10</span><span>- € 11,47</span></div><div><span>Spedizione</span><span>Gratis</span></div><div class="g"><span>Totale pagato</span><span>€ 103,23</span></div></div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:20px">
+      <div class="ibox"><h3>Consegna</h3><dl><dt>Indirizzo</dt><dd>Giulia Rossi, Via Cristoforo Colombo 112, 00147 Roma</dd><dt>Corriere</dt><dd>Espresso 24/48 ore</dd><dt>Pagamento</dt><dd>Visa •••• 3456</dd></dl></div>
+      <div class="reg"><span class="k">Hai acquistato come ospite</span><h2 class="H">Crea il tuo account in un clic</h2><ul><li>Segui l'ordine e i prossimi acquisti</li><li>Salva i tuoi indirizzi</li><li>Lista dei preferiti</li><li>Chiedi un reso o un cambio taglia</li></ul><span class="btn">Crea account</span></div>
+    </div>
+  </div>
+  <section class="shelf"><div class="sec-h"><h2 class="H">Novità che potrebbero piacerti</h2></div><div class="grid" id="g"></div></section>
+</div>
+<div id="ftr"></div>
+<script>
+fill('hdr', header(''));
+fill('tk', ICON.check);
+fill('tr', '<div class="done"><i>'+ICON.check+'</i><span><b>Ordine ricevuto</b>Oggi, 10:42</span></div><div class="now"><i>2</i><span><b>In preparazione</b>Entro domani</span></div><div><i>3</i><span><b>Spedito</b>Ti mandiamo il tracking</span></div><div><i>4</i><span><b>Consegnato</b>Previsto mer 12 nov</span></div>');
+function li(id, v){var p=P[id];return '<div class="li"><img src="'+IMG(id)+'" alt=""><div class="lt"><b>'+p[0]+'</b><span>'+v+' · Qtà 1</span></div><b>'+eur(p[1])+'</b></div>';}
+fill('items', li('abito-rosso','Rosso · Taglia M') + li('siero-vitc','30 ml') + li('rossetto','Nude 02'));
+fill('g', cards(['crema','abito-floreale','palette','felpa']));
+fill('ftr', footer());
+</script>
+</body></html>

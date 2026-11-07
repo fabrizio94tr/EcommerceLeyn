@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="it"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=DM+Sans:wght@400;500;600;700;800&family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Jost:wght@400;500;600;700&family=Bodoni+Moda:wght@500;600;700&family=Manrope:wght@400;500;600;700;800&family=Unbounded:wght@400;600;700&family=Nunito+Sans:wght@400;600;700;800&display=swap">
+<link rel="stylesheet" href="base.css"><script src="common.js"></script><title>Alana Beauty · Scheda cosmetico</title></head>
+<body>
+<div id="hdr"></div>
+<div class="wrap">
+  <div class="crumb" id="cr"></div>
+  <div class="pdp">
+    <div class="gal">
+      <div class="th"><img class="on" src="../../src/img/siero-vitc.jpg" alt=""><img src="../../src/img/h-siero.jpg" alt=""><img src="../../src/img/h-crema.jpg" alt=""><img src="../../src/img/siero-vitc.jpg" alt="" style="transform:scale(2);transform-origin:50% 45%"></div>
+      <div class="main"><img src="../../src/img/siero-vitc.jpg" alt=""><span class="wish" id="w1"></span><span class="gdots"><i class="on"></i><i></i><i></i><i></i></span></div>
+    </div>
+    <div class="pinfo">
+      <span class="k">Cosmetici · Viso · Sieri</span>
+      <h1 class="H">Siero illuminante vitamina C</h1>
+      <div class="rev"><span class="stars" id="st"></span>4,9 · 41 recensioni</div>
+      <div class="price"><b>€ 29,90</b><span style="color:var(--muted);font-size:14px">€ 99,67 / litro</span></div>
+      <div class="claims" id="cl"></div>
+      <div class="opt"><b>Formato</b><div class="fmts"><span class="on"><b>30 ml</b>€ 29,90</span><span><b>50 ml</b>€ 42,90</span></div></div>
+      <div class="buy"><span class="qty" id="qt"></span><span class="btn" id="add"></span><span class="wbtn" id="w2"></span></div>
+      <div class="ship" id="sh"></div>
+      <div class="acc">
+        <details open><summary>Descrizione <i id="d1" style="width:20px;height:20px;display:block"></i></summary><div class="ab"><p>Siero leggero a rapido assorbimento con vitamina C stabilizzata e niacinamide. Uniforma l'incarnato e dona luminosità già dalle prime settimane.</p></div></details>
+        <details open><summary>Modo d'uso <i id="d2" style="width:20px;height:20px;display:block"></i></summary><div class="ab"><p>Mattina e sera, su pelle pulita e asciutta, applica 3-4 gocce su viso e collo. Massaggia fino ad assorbimento, poi la tua crema. Al mattino completa con protezione solare.</p></div></details>
+        <details open><summary>Ingredienti (INCI) <i id="d3" style="width:20px;height:20px;display:block"></i></summary><div class="ab"><p class="inci">Aqua, Glycerin, Ascorbyl Glucoside, Niacinamide, Propanediol, Sodium Hyaluronate, Panthenol, Citrus Aurantium Dulcis Peel Oil, Xanthan Gum, Sodium Phytate, Phenoxyethanol, Ethylhexylglycerin, Citric Acid, Limonene.</p></div></details>
+        <details open><summary>Informazioni di sicurezza <i id="d4" style="width:20px;height:20px;display:block"></i></summary><div class="ab"><dl><dt>Contenuto</dt><dd>30 ml</dd><dt>Dopo l'apertura</dt><dd>Usare entro 12 mesi</dd><dt>Avvertenze</dt><dd>Solo per uso esterno. Evitare il contatto con gli occhi.</dd></dl></div></details>
+      </div>
+      <div class="rp" id="rp"></div>
+    </div>
+  </div>
+  <section class="howto"><div class="sec-h"><h2 class="H">La routine in 3 passi</h2></div><div class="g">
+    <div class="step"><span class="n">1</span><h3 class="H">Detergi</h3><p>Gel detergente delicato, mattina e sera, su pelle umida.</p></div>
+    <div class="step"><span class="n">2</span><h3 class="H">Tratta</h3><p>3-4 gocce di siero alla vitamina C su viso e collo.</p></div>
+    <div class="step"><span class="n">3</span><h3 class="H">Idrata</h3><p>Crema idratante viso per fissare i principi attivi.</p></div>
+  </div></section>
+  <section class="shelf" style="padding-top:10px"><div class="sec-h"><h2 class="H">Ti potrebbero piacere</h2><span class="lnk">Tutta la skincare</span></div><div class="grid" id="g"></div></section>
+</div>
+<div id="ftr"></div>
+<script>
+fill('hdr', header('cos'));
+fill('cr', 'Home ' + ICON.chev + ' Cosmetici ' + ICON.chev + ' Viso ' + ICON.chev + ' <b>Siero illuminante vitamina C</b>');
+fill('st', ICON.star+ICON.star+ICON.star+ICON.star+ICON.star);
+fill('cl', ['Tutti i tipi di pelle', 'Senza parabeni', 'Dermatologicamente testato'].map(function(x){return '<span>'+ICON.check+x+'</span>';}).join(''));
+fill('w1', ICON.heart); fill('w2', ICON.heart);
+fill('qt', ICON.minus + '1' + ICON.plus);
+fill('add', ICON.bag + 'Aggiungi al carrello');
+fill('sh', '<span class="stock">Disponibile, spedito in 24/48 ore</span><span>' + ICON.truck + 'Spedizione € 5,90 · gratuita sopra € 49</span>');
+fill('d1', ICON.minus); fill('d2', ICON.minus); fill('d3', ICON.minus); fill('d4', ICON.minus);
+fill('rp', ICON.leaf + '<span><b>Persona responsabile UE:</b> [Nome e indirizzo UE come da etichetta] · <b>Paese di origine:</b> Regno Unito · Etichetta e avvertenze in italiano (Reg. CE 1223/2009).</span>');
+fill('g', cards(['crema','detergente','tonico','siero-viso']));
+fill('ftr', footer());
+</script>
+</body></html>

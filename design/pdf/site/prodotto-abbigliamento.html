@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="it"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=DM+Sans:wght@400;500;600;700;800&family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Jost:wght@400;500;600;700&family=Bodoni+Moda:wght@500;600;700&family=Manrope:wght@400;500;600;700;800&family=Unbounded:wght@400;600;700&family=Nunito+Sans:wght@400;600;700;800&display=swap">
+<link rel="stylesheet" href="base.css"><script src="common.js"></script><title>Alana Beauty · Scheda abbigliamento</title></head>
+<body>
+<div id="hdr"></div>
+<div class="wrap">
+  <div class="crumb" id="cr"></div>
+  <div class="pdp">
+    <div class="gal">
+      <div class="th"><img class="on" src="../../src/img/abito-rosso.jpg" alt=""><img src="../../src/img/abito-rosso.jpg" alt="" style="object-position:top;transform:scale(1.6);transform-origin:50% 25%"><img src="../../src/img/abito-rosso.jpg" alt="" style="transform:scale(1.8);transform-origin:50% 60%"><img src="../../src/img/abito-rosso.jpg" alt="" style="transform:scale(2.2);transform-origin:40% 85%"></div>
+      <div class="main"><img src="../../src/img/abito-rosso.jpg" alt=""><span class="wish" id="w1"></span><span class="gdots"><i class="on"></i><i></i><i></i><i></i></span></div>
+    </div>
+    <div class="pinfo">
+      <span class="k">Abiti · Nuova collezione</span>
+      <h1 class="H">Abito midi con cintura</h1>
+      <div class="rev"><span class="stars" id="st"></span>4,8 · 23 recensioni</div>
+      <div class="price sale"><b>€ 64,90</b><s>€ 79,90</s><em>-19%</em></div>
+      <div class="opt"><b>Colore: Rosso <span>2 colori</span></b><div class="cols"><i class="on" style="background:#C42430"></i><i style="background:#1C1C1C"></i></div></div>
+      <div class="opt"><b>Taglia: M <span class="lnk">Misure del capo</span></b><div class="sizes"><span>XS</span><span class="off">S</span><span class="on">M</span><span>L</span><span>XL</span></div></div>
+      <div class="notify">
+        <div class="nt" id="nt"></div>
+        <div class="nrow"><span class="inp">La tua email</span><span class="btn">Avvisami</span></div>
+        <span class="cons"><i></i>Accetto di ricevere l'avviso di disponibilità (informativa privacy)</span>
+      </div>
+      <div class="buy"><span class="qty" id="qt"></span><span class="btn" id="add"></span><span class="wbtn" id="w2"></span></div>
+      <div class="ship" id="sh"></div>
+      <div class="acc">
+        <details open><summary>Descrizione <i id="d1" style="width:20px;height:20px;display:block"></i></summary><div class="ab"><p>Abito midi a portafoglio con cintura in vita e maniche corte a sbuffo. Morbido e leggero, si porta dal giorno alla sera con sandali o décolleté.</p></div></details>
+        <details open><summary>Composizione e lavaggio <i id="d2" style="width:20px;height:20px;display:block"></i></summary><div class="ab"><dl><dt>Tessuto</dt><dd>100% viscosa</dd><dt>Vestibilità</dt><dd>Regolare · la modella indossa la S ed è alta 172 cm</dd><dt>Lavaggio</dt><dd>A mano o in lavatrice a 30°, non candeggiare</dd></dl></div></details>
+        <details><summary>Spedizioni, resi e cambi <i id="d3" style="width:20px;height:20px;display:block"></i></summary></details>
+      </div>
+    </div>
+  </div>
+  <section class="shelf" style="padding-top:10px"><div class="sec-h"><h2 class="H">Ultimi arrivi</h2><span class="lnk">Vedi tutti</span></div><div class="grid" id="g"></div></section>
+</div>
+<div id="ftr"></div>
+<script>
+fill('hdr', header('abb'));
+fill('cr', 'Home ' + ICON.chev + ' Abbigliamento ' + ICON.chev + ' Abiti ' + ICON.chev + ' <b>Abito midi con cintura</b>');
+fill('st', ICON.star+ICON.star+ICON.star+ICON.star+ICON.star);
+fill('w1', ICON.heart); fill('w2', ICON.heart);
+fill('nt', ICON.bell + '<span><b>Taglia S esaurita.</b> Lasciaci la tua email: ti scriviamo appena torna disponibile.</span>');
+fill('qt', ICON.minus + '1' + ICON.plus);
+fill('add', ICON.bag + 'Aggiungi al carrello');
+fill('sh', '<span class="stock">Disponibile, spedito in 24/48 ore</span><span>' + ICON.truck + 'Spedizione € 5,90 · gratuita sopra € 49</span><span>' + ICON.ret + 'Reso o cambio taglia entro 14 giorni</span>');
+fill('d1', ICON.minus); fill('d2', ICON.minus); fill('d3', ICON.plus);
+fill('g', cards(['abito-pizzo','trench','pantalone-rosa','abito-floreale']));
+fill('ftr', footer());
+</script>
+</body></html>

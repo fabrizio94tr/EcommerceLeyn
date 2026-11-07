@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="it"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=DM+Sans:wght@400;500;600;700;800&family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Jost:wght@400;500;600;700&family=Bodoni+Moda:wght@500;600;700&family=Manrope:wght@400;500;600;700;800&family=Unbounded:wght@400;600;700&family=Nunito+Sans:wght@400;600;700;800&display=swap">
+<link rel="stylesheet" href="../site/base.css"><link rel="stylesheet" href="admin.css"><script src="../site/common.js"></script><script src="admin.js"></script><title>Dashboard · Magazzino</title></head><body>
+<div class="app"><div id="sb"></div><main class="main"><div id="top"></div>
+  <div class="kpis">
+    <div class="kpi"><span>Prodotti attivi</span><b>84</b><small style="color:var(--a-muted)">212 varianti</small></div>
+    <div class="kpi"><span>Sotto scorta minima</span><b>3</b><small class="dn">da riordinare</small></div>
+    <div class="kpi"><span>Esauriti</span><b>2</b><small class="dn">14 clienti in attesa</small></div>
+    <div class="kpi"><span>Valore magazzino</span><b>€ 9.420</b><small style="color:var(--a-muted)">al costo d'acquisto</small></div>
+  </div>
+  <div class="tabs"><span class="on">Tutti</span><span>Abbigliamento</span><span>Cosmetici</span><span>Sotto scorta<em>3</em></span><span>Esauriti<em>2</em></span></div>
+  <div class="row2">
+    <div class="pane"><table class="rt"><thead><tr><th>Prodotto · variante</th><th class="n">Pezzi</th><th class="n hide-t">Scorta min.</th><th class="n">In attesa</th><th>Stato</th></tr></thead><tbody id="tb"></tbody></table></div>
+    <div style="display:flex;flex-direction:column;gap:18px">
+      <div class="pane"><h2>Importa prodotti da Excel</h2><div class="drop" id="dr"></div><span class="note">Una riga per variante: nome, categoria, taglia/formato, colore, prezzo, costo, pezzi. Ti mostriamo l'anteprima prima di salvare.</span><span class="b g" style="align-self:flex-start">Scarica il modello</span></div>
+      <div class="pane"><h2>Lista d'attesa</h2><div class="top5">
+        <div class="tp"><img src="../../src/img/abito-rosso.jpg" alt=""><span><b>Abito midi · Rosso S</b><span>6 clienti</span></span><span class="st bad">Esaurito</span></div>
+        <div class="tp"><img src="../../src/img/palette.jpg" alt=""><span><b>Palette ombretti</b><span>8 clienti</span></span><span class="st bad">Esaurito</span></div>
+      </div><span class="note">Al rifornimento parte la mail "È tornato disponibile" solo a chi ha dato il consenso.</span></div>
+    </div>
+  </div>
+</main></div>
+<script>
+shell('mag','Magazzino','Le giacenze scendono da sole a ogni ordine','<span class="srch">'+ICON.search+'Cerca prodotto</span><span class="b">Importa da Excel</span>');
+fill('tb',[['abito-rosso','Rosso · S',0,2,6,'bad','Esaurito'],['palette','35 colori',0,3,8,'bad','Esaurito'],['siero-vitc','50 ml',2,3,0,'prep','Sotto scorta'],['abito-rosso','Rosso · L',2,2,0,'prep','Sotto scorta'],['trench','Beige · M',1,2,0,'prep','Sotto scorta'],['crema','50 ml',24,5,0,'ok','Disponibile'],['jeans','Chiaro · 40',9,3,0,'ok','Disponibile'],['rossetto','Nude 02',31,6,0,'ok','Disponibile']].map(function(r){return '<tr><td class="full"><span class="pi"><img src="'+IMG(r[0])+'" alt=""><span><b>'+P[r[0]][0]+'</b><span>'+r[1]+'</span></span></span></td><td class="n" data-l="Pezzi"><span class="stk'+(r[2]==0?' zero':r[2]<=r[3]?' low':'')+'">'+r[2]+'</span></td><td class="n hide-t hide-m">'+r[3]+'</td><td class="n" data-l="In attesa">'+(r[4]||'–')+'</td><td><span class="st '+r[5]+'">'+r[6]+'</span></td></tr>';}).join(''));
+fill('dr','<svg viewBox="0 0 24 24"><path d="M12 16V4m0 0-5 5m5-5 5 5M4 16v4h16v-4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><b>Trascina qui il file CSV o Excel</b>oppure clicca per sceglierlo');
+</script></body></html>

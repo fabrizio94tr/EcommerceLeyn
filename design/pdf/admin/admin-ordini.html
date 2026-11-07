@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="it"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=DM+Sans:wght@400;500;600;700;800&family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Jost:wght@400;500;600;700&family=Bodoni+Moda:wght@500;600;700&family=Manrope:wght@400;500;600;700;800&family=Unbounded:wght@400;600;700&family=Nunito+Sans:wght@400;600;700;800&display=swap">
+<link rel="stylesheet" href="../site/base.css"><link rel="stylesheet" href="admin.css"><script src="../site/common.js"></script><script src="admin.js"></script><title>Dashboard · Ordini</title></head><body>
+<div class="app"><div id="sb"></div><main class="main"><div id="top"></div>
+  <div class="tabs"><span class="on">Da spedire<em>5</em></span><span>Spediti<em>12</em></span><span>Consegnati<em>41</em></span><span>Annullati<em>1</em></span><span>Tutti<em>59</em></span></div>
+  <div class="row2">
+    <div class="pane"><table class="rt"><thead><tr><th>Ordine</th><th>Cliente</th><th class="hide-t">Data</th><th>Pagamento</th><th class="n">Totale</th><th>Stato</th></tr></thead><tbody id="tb"></tbody></table></div>
+    <div class="pane det">
+      <h2>Ordine AB-1042 <span class="st prep">Da spedire</span></h2>
+      <dl><dt>Cliente</dt><dd>Giulia Rossi (ospite)</dd><dt>Email</dt><dd>giulia.r@email.it</dd><dt>Spedizione</dt><dd>Via C. Colombo 112, 00147 Roma</dd><dt>Pagamento</dt><dd>Carta Visa · Stripe · pagato</dd><dt>Coupon</dt><dd>BENVENUTA10 (-€ 11,47)</dd></dl>
+      <div id="its" style="display:flex;flex-direction:column;gap:10px"></div>
+      <div class="f">Codice di tracking<span class="i">Es. 1Z999AA10123456784</span><small>Quando salvi, il cliente riceve l'email "Il tuo ordine è partito" con il link.</small></div>
+      <div style="display:flex;gap:10px;flex-wrap:wrap"><span class="b">Segna come spedito</span><span class="b g">Stampa riepilogo</span></div>
+      <div class="tl"><div><i id="c1"></i>Ordine ricevuto · email di conferma inviata · 10:42</div><div class="no"><i></i>Spedito · email con tracking</div></div>
+    </div>
+  </div>
+</main></div>
+<script>
+shell('ord','Ordini','5 da spedire oggi','<span class="srch">'+ICON.search+'Cerca per numero o cliente</span><span class="b g hide-m">Esporta CSV</span>');
+fill('tb',[['AB-1042','Giulia Rossi','7 nov, 10:42','Carta','€ 103,23',1],['AB-1041','Martina Bianchi','7 nov, 09:15','PayPal','€ 64,90'],['AB-1040','Sara Conti','6 nov, 22:08','Apple Pay','€ 147,60'],['AB-1039','Elena Greco','6 nov, 18:30','Carta','€ 52,80'],['AB-1038','Chiara Marino','6 nov, 11:02','Google Pay','€ 89,90']].map(function(r){return '<tr'+(r[5]?' class="sel"':'')+'><td><b>'+r[0]+'</b></td><td class="n">'+r[1]+'</td><td class="hide-t hide-m">'+r[2]+'</td><td data-l="Pagamento">'+r[3]+'</td><td class="n"><b>'+r[4]+'</b></td><td class="hide-m"><span class="st prep">Da spedire</span></td></tr>';}).join(''));
+fill('its',[['abito-rosso','Rosso · M'],['siero-vitc','30 ml'],['rossetto','Nude 02']].map(function(x){return '<div class="li2"><img src="'+IMG(x[0])+'" alt=""><div><b>'+P[x[0]][0]+'</b><span>'+x[1]+' · Qtà 1</span></div><b>'+eur(P[x[0]][1])+'</b></div>';}).join(''));
+fill('c1',ICON.check);
+</script></body></html>

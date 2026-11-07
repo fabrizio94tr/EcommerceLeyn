@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="it"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=DM+Sans:wght@400;500;600;700;800&family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Jost:wght@400;500;600;700&family=Bodoni+Moda:wght@500;600;700&family=Manrope:wght@400;500;600;700;800&family=Unbounded:wght@400;600;700&family=Nunito+Sans:wght@400;600;700;800&display=swap">
+<link rel="stylesheet" href="../site/base.css"><link rel="stylesheet" href="admin.css"><script src="../site/common.js"></script><script src="admin.js"></script><title>Dashboard · Resi</title></head><body>
+<div class="app"><div id="sb"></div><main class="main"><div id="top"></div>
+  <div class="tabs"><span class="on">Da approvare<em>2</em></span><span>In arrivo<em>1</em></span><span>Chiusi<em>9</em></span></div>
+  <div class="row2">
+    <div class="pane"><table class="rt"><thead><tr><th>Richiesta</th><th>Cliente</th><th>Tipo</th><th>Motivo</th><th>Stato</th></tr></thead><tbody>
+      <tr class="sel"><td><b>R-021</b><br><span class="note">ordine AB-1017</span></td><td class="n">Sara Conti</td><td data-l="Tipo">Cambio taglia</td><td class="full hide-m">Troppo stretto in vita</td><td><span class="st prep">Da approvare</span></td></tr>
+      <tr><td><b>R-020</b><br><span class="note">ordine AB-1009</span></td><td class="n">Elena Greco</td><td data-l="Tipo">Reso e rimborso</td><td class="full hide-m">Colore diverso dalla foto</td><td><span class="st prep">Da approvare</span></td></tr>
+      <tr><td><b>R-019</b><br><span class="note">ordine AB-0981</span></td><td class="n">Giulia Rossi</td><td data-l="Tipo">Cambio taglia</td><td class="full hide-m">Taglia piccola</td><td><span class="st ship">In arrivo</span></td></tr>
+    </tbody></table></div>
+    <div class="pane det">
+      <h2>R-021 · Cambio taglia <span class="st prep">Da approvare</span></h2>
+      <div class="li2"><img src="../../src/img/trench.jpg" alt=""><div><b>Trench doppiopetto</b><span>Beige · da M a L</span></div><b>€ 89,90</b></div>
+      <dl><dt>Cliente</dt><dd>Sara Conti</dd><dt>Consegnato il</dt><dd>30 ottobre (8 giorni fa)</dd><dt>Motivo</dt><dd>"Troppo stretto in vita, vorrei la L"</dd><dt>Taglia L</dt><dd>4 pezzi disponibili</dd></dl>
+      <div style="display:flex;gap:10px;flex-wrap:wrap"><span class="b">Approva e invia istruzioni</span><span class="b g">Rifiuta</span></div>
+      <span class="note">Approvando, la cliente riceve l'email con le istruzioni di spedizione. Quando ti arriva il pacco, segna "Ricevuto" e spedisci la nuova taglia o fai il rimborso da Stripe/PayPal.</span>
+    </div>
+  </div>
+</main></div>
+<script>shell('ret','Resi e cambi','Le clienti li chiedono dall\'area personale, entro 14 giorni','');</script></body></html>

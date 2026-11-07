@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="it"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=DM+Sans:wght@400;500;600;700;800&family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Jost:wght@400;500;600;700&family=Bodoni+Moda:wght@500;600;700&family=Manrope:wght@400;500;600;700;800&family=Unbounded:wght@400;600;700&family=Nunito+Sans:wght@400;600;700;800&display=swap">
+<link rel="stylesheet" href="../site/base.css"><link rel="stylesheet" href="admin.css"><script src="../site/common.js"></script><script src="admin.js"></script><title>Dashboard · Promozioni</title></head><body>
+<div class="app"><div id="sb"></div><main class="main"><div id="top"></div>
+  <div class="row2 eq">
+    <div class="pane"><h2>Coupon attivi <span class="lk">+ Nuovo coupon</span></h2>
+      <div class="cp"><span class="code">BENVENUTA10</span><span class="st ok">Automatico</span><span>-10% sul primo ordine a chi si iscrive alla newsletter</span><span>38 usi</span></div>
+      <div class="cp"><span class="code">SKIN20</span><span class="st ok">Attivo</span><span>-20% sulla skincare viso · fino al 9 nov</span><span>21 usi</span></div>
+      <div class="cp"><span class="code">NATALE15</span><span class="st off">Programmato</span><span>-15% su tutto, minimo € 60 · dal 1 al 24 dic</span><span>–</span></div>
+    </div>
+    <div class="pane"><h2>Nuovo coupon</h2>
+      <div class="fr"><div class="f">Codice<span class="i">NATALE15</span></div><div class="f">Sconto<span class="i">15 %</span></div></div>
+      <div class="fr"><div class="f">Valido dal<span class="i">01/12/2026</span></div><div class="f">al<span class="i">24/12/2026</span></div></div>
+      <div class="fr"><div class="f">Su cosa<span class="i">Tutto il negozio</span></div><div class="f">Ordine minimo<span class="i">€ 60</span></div></div>
+      <div class="tg"><span>Un solo uso per cliente</span><i class="sw"></i></div>
+      <span class="b" style="align-self:flex-start">Salva coupon</span>
+    </div>
+  </div>
+  <div class="row2 r">
+    <div class="pane"><h2>Spedizioni</h2>
+      <div class="fr"><div class="f">Tariffa fissa<span class="i">€ 5,90</span></div><div class="f">Gratis sopra<span class="i">€ 49,00</span></div></div>
+      <span class="note">Il valore appare nella barra in alto del sito e nel carrello.</span>
+    </div>
+    <div class="pane"><h2>Home: banner e vetrine</h2>
+      <div class="tp" style="grid-template-columns:120px 1fr auto"><img src="../../src/img/h-denim.jpg" alt="" style="width:120px;height:70px"><span><b>Banner 1 · Nuova collezione autunno</b><span>Sempre attivo</span></span><i class="sw"></i></div>
+      <div class="tp" style="grid-template-columns:120px 1fr auto"><img src="../../src/img/h-crema.jpg" alt="" style="width:120px;height:70px"><span><b>Promo: -20% skincare viso</b><span>Fino al 9 novembre</span></span><i class="sw"></i></div>
+      <div class="tg"><span>Novità della settimana<small>Si riempie da sola con gli ultimi prodotti caricati</small></span><i class="sw"></i></div>
+      <div class="tg"><span>In evidenza<small>I prodotti con "In evidenza in home" attivo (8)</small></span><i class="sw"></i></div>
+    </div>
+  </div>
+</main></div>
+<script>shell('promo','Promozioni e coupon','Sconti, coupon di benvenuto e cosa appare in home','<span class="b">'+ICON.plus+'Nuovo coupon</span>');</script></body></html>

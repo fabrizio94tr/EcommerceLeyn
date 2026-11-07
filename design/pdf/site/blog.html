@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="it"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=DM+Sans:wght@400;500;600;700;800&family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Jost:wght@400;500;600;700&family=Bodoni+Moda:wght@500;600;700&family=Manrope:wght@400;500;600;700;800&family=Unbounded:wght@400;600;700&family=Nunito+Sans:wght@400;600;700;800&display=swap">
+<link rel="stylesheet" href="base.css"><script src="common.js"></script><title>Alana Beauty · Blog</title></head>
+<body>
+<div id="hdr"></div>
+<div class="wrap">
+  <div class="art-h"><span class="k">Beauty blog · Skincare</span><h1 class="H">Come scegliere la crema giusta per la tua pelle</h1><p>Pelle secca, mista, grassa o sensibile: riconoscila in un minuto e costruisci una routine che funziona davvero.</p><span class="by"><i></i>Layne · 6 minuti di lettura · 4 nov 2026</span></div>
+  <div class="art-img"><img src="../../src/img/h-crema.jpg" alt=""></div>
+  <div class="art">
+    <nav class="toc"><b>In questo articolo</b><span class="on">1. Riconosci il tuo tipo di pelle</span><span>2. Gli ingredienti da cercare</span><span>3. Giorno e notte</span><span>4. Errori da evitare</span></nav>
+    <div class="body">
+      <h2>1. Riconosci il tuo tipo di pelle</h2>
+      <p>Lava il viso con un detergente delicato e aspetta un'ora senza applicare nulla. Poi guarda e tocca la pelle: ti dirà quasi tutto quello che serve.</p>
+      <div class="skin"><div><b>Secca</b>Tira e a volte si squama.</div><div><b>Grassa</b>Lucida su tutto il viso.</div><div><b>Mista</b>Lucida solo sulla zona T.</div><div><b>Sensibile</b>Si arrossa facilmente.</div></div>
+      <h2>2. Gli ingredienti da cercare</h2>
+      <p>Leggi sempre l'elenco degli ingredienti (INCI): sono in ordine di quantità. Per la pelle secca cerca glicerina, burri e acido ialuronico; per la grassa formule leggere con niacinamide.</p>
+      <div class="inl" id="inl"></div>
+      <h2>3. Giorno e notte</h2>
+      <p>Di giorno una texture leggera e la protezione solare; la sera una crema più ricca che lavori mentre dormi.</p>
+      <ul><li>Mattina: detergente, siero, crema, protezione solare</li><li>Sera: struccante, detergente, siero, crema nutriente</li></ul>
+    </div>
+    <aside class="side2"><b class="k">Leggi anche</b>
+      <article class="post"><div class="pi"><img src="../../src/img/h-trucco.jpg" alt=""></div><h3 class="H">Trucco occhi luminoso in 5 minuti</h3></article>
+      <article class="post"><div class="pi"><img src="../../src/img/h-floreale.jpg" alt=""></div><h3 class="H">Abiti di stagione: come abbinarli</h3></article>
+    </aside>
+  </div>
+  <section class="shelf"><div class="sec-h"><h2 class="H">I prodotti dell'articolo</h2></div><div class="grid" id="g"></div></section>
+</div>
+<div id="ftr"></div>
+<script>
+fill('hdr', header('blog'));
+fill('inl', '<img src="'+IMG('siero-viso')+'" alt=""><span><b>Siero acido ialuronico</b>Idratazione profonda per tutti i tipi di pelle · € 27,90</span><span class="btn">Aggiungi</span>');
+fill('g', cards(['crema','siero-viso','detergente','tonico']));
+fill('ftr', footer());
+</script>
+</body></html>

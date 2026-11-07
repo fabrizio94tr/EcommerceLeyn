@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="it"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=DM+Sans:wght@400;500;600;700;800&family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Jost:wght@400;500;600;700&family=Bodoni+Moda:wght@500;600;700&family=Manrope:wght@400;500;600;700;800&family=Unbounded:wght@400;600;700&family=Nunito+Sans:wght@400;600;700;800&display=swap">
+<link rel="stylesheet" href="base.css"><script src="common.js"></script><title>Alana Beauty · Carrello e checkout</title></head>
+<body>
+<div id="hdr"></div>
+<div class="wrap">
+  <div class="co">
+    <div>
+      <div class="co-h"><h1 class="H">Checkout</h1></div>
+      <div class="steps" id="steps"></div>
+      <div class="fbox"><h3>Pagamento veloce</h3><div class="wallet"><span>Apple Pay</span><span class="gp">Google Pay</span><span class="pp">PayPal</span></div><div class="or">oppure compila i dati</div></div>
+      <div class="fbox">
+        <h3><span><span class="n">1</span>Contatti</span><small>Hai un account? <u>Accedi</u></small></h3>
+        <div class="seg2"><span class="on">Continua come ospite</span><span>Crea un account</span></div>
+        <div class="fld">Email<span class="inp v">giulia.r@email.it</span></div>
+        <span class="cons" style="opacity:1;color:var(--muted)"><i></i>Iscrivimi alla newsletter (-10% sul prossimo ordine)</span>
+      </div>
+      <div class="fbox">
+        <h3><span><span class="n">2</span>Indirizzo di spedizione</span></h3>
+        <div class="frow"><div class="fld">Nome<span class="inp v">Giulia</span></div><div class="fld">Cognome<span class="inp v">Rossi</span></div></div>
+        <div class="fld">Indirizzo<span class="inp v">Via Cristoforo Colombo 112</span></div>
+        <div class="frow"><div class="fld">CAP<span class="inp v">00147</span></div><div class="fld">Città<span class="inp v">Roma (RM)</span></div></div>
+        <div class="fld">Telefono (per il corriere)<span class="inp v">+39 333 123 4567</span></div>
+      </div>
+      <div class="fbox">
+        <h3><span><span class="n">3</span>Spedizione</span></h3>
+        <div class="radio on"><i></i><span class="rt"><b>Corriere espresso</b><small>Consegna in 24/48 ore lavorative</small></span><b class="r">Gratis</b></div>
+      </div>
+      <div class="fbox">
+        <h3><span><span class="n">4</span>Pagamento</span><small id="lk"></small></h3>
+        <div class="radio on"><i></i><span class="rt"><b>Carta di credito o debito</b><small>Pagamento sicuro con Stripe</small></span><span class="pm"><em>VISA</em><em>MASTERCARD</em><em>AMEX</em></span></div>
+        <div class="fld">Numero carta<span class="inp">1234 5678 9012 3456</span></div>
+        <div class="frow"><div class="fld">Scadenza<span class="inp">MM / AA</span></div><div class="fld">CVC<span class="inp">123</span></div></div>
+        <div class="radio"><i></i><span class="rt"><b>PayPal</b><small>Paghi con il tuo conto PayPal</small></span></div>
+        <span class="cons" style="opacity:1;color:var(--muted)"><i></i>Ho letto e accetto le condizioni di vendita e l'informativa privacy</span>
+      </div>
+    </div>
+    <aside class="sum">
+      <h3>Il tuo ordine · 3 articoli</h3>
+      <div class="free"><span>Hai la <b>spedizione gratuita</b>: ordine sopra € 49</span><span class="bar"><i></i></span></div>
+      <div id="items" style="display:flex;flex-direction:column;gap:16px"></div>
+      <div class="coupon"><span class="inp">Codice sconto</span><span class="btn ghost">Applica</span></div>
+      <div class="applied"><span>BENVENUTA10 · -10% primo ordine</span><span>✕</span></div>
+      <div class="tot">
+        <div><span>Subtotale</span><span>€ 114,70</span></div>
+        <div class="disc"><span>Sconto BENVENUTA10</span><span>- € 11,47</span></div>
+        <div><span>Spedizione</span><span>Gratis</span></div>
+        <div class="g"><span>Totale</span><span>€ 103,23</span></div>
+        <small>IVA inclusa</small>
+      </div>
+      <span class="btn" id="pay"></span>
+      <span class="secure" id="sec"></span>
+    </aside>
+  </div>
+</div>
+<div id="ftr"></div>
+<script>
+fill('hdr', header(''));
+fill('steps', '<span class="done"><i>'+ICON.check+'</i>Carrello</span><b></b><span class="on"><i>2</i>Dati e pagamento</span><b></b><span><i>3</i>Conferma</span>');
+fill('lk', 'Pagamenti protetti');
+function li(id, v, q){var p=P[id];return '<div class="li"><img src="'+IMG(id)+'" alt=""><div class="lt"><b>'+p[0]+'</b><span>'+v+'</span><span class="lq"><i>'+ICON.minus+'</i>'+q+'<i>'+ICON.plus+'</i></span></div><b>'+eur(p[1]*q)+'</b></div>';}
+fill('items', li('abito-rosso','Rosso · Taglia M',1) + li('siero-vitc','30 ml',1) + li('rossetto','Nude 02',1));
+fill('pay', ICON.lock + 'Paga € 103,23');
+fill('sec', ICON.lock + 'Pagamento protetto · Stripe e PayPal');
+fill('ftr', footer(true));
+</script>
+</body></html>

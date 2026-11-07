@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="it"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=DM+Sans:wght@400;500;600;700;800&family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Jost:wght@400;500;600;700&family=Bodoni+Moda:wght@500;600;700&family=Manrope:wght@400;500;600;700;800&family=Unbounded:wght@400;600;700&family=Nunito+Sans:wght@400;600;700;800&display=swap">
+<link rel="stylesheet" href="../site/base.css"><link rel="stylesheet" href="admin.css"><script src="../site/common.js"></script><script src="admin.js"></script><title>Dashboard · Modifica cosmetico</title></head><body>
+<div class="app"><div id="sb"></div><main class="main"><div id="top"></div>
+  <div class="row2">
+    <div style="display:flex;flex-direction:column;gap:18px;min-width:0">
+      <div class="pane"><h2>Foto</h2><div class="photos"><img src="../../src/img/siero-vitc.jpg" alt=""><img src="../../src/img/h-siero.jpg" alt=""><img src="../../src/img/h-crema.jpg" alt=""><span>+ Aggiungi foto</span><span>+</span></div></div>
+      <div class="pane"><h2>Scheda cosmetico</h2>
+        <div class="fr"><div class="f">Nome<span class="i">Siero illuminante vitamina C</span></div><div class="f">Categoria<span class="i">Cosmetici › Viso › Sieri</span></div></div>
+        <div class="f">Ingredienti (INCI)<span class="i ta">Aqua, Glycerin, Ascorbyl Glucoside, Niacinamide, Propanediol, Sodium Hyaluronate, Panthenol, Citrus Aurantium Dulcis Peel Oil, Xanthan Gum…</span><small>Copiali dall'etichetta, nello stesso ordine.</small></div>
+        <div class="f">Modo d'uso<span class="i ta">Mattina e sera, su pelle pulita e asciutta, applica 3-4 gocce su viso e collo…</span></div>
+        <div class="fr3"><div class="f">Dopo l'apertura (PAO)<span class="i">12 mesi</span></div><div class="f">Paese di origine<span class="i">Regno Unito</span></div><div class="f">Lotto<span class="i">LT-2026-118</span></div></div>
+        <div class="f">Persona responsabile UE (dall'etichetta)<span class="i">[Nome e indirizzo UE]</span><small>Obbligatoria per vendere in Italia: se in etichetta manca, non pubblicare il prodotto.</small></div>
+      </div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:18px">
+      <div class="pane"><h2>Formati, prezzi e giacenze</h2>
+        <table class="vm"><thead><tr><th>Formato</th><th class="n">Prezzo</th><th class="n">Costo</th><th class="n">Pezzi</th></tr></thead><tbody>
+          <tr><td><b>30 ml</b></td><td class="n">€ 29,90</td><td class="n">€ 12,40</td><td class="n"><span class="stk">18</span></td></tr>
+          <tr><td><b>50 ml</b></td><td class="n">€ 42,90</td><td class="n">€ 17,80</td><td class="n"><span class="stk low">2</span></td></tr>
+        </tbody></table>
+        <span class="note">50 ml sotto la scorta minima (3): ti abbiamo mandato una mail.</span>
+      </div>
+      <div class="pane"><h2>Visibilità</h2>
+        <div class="tg"><span>Pubblicato<small>Visibile nel negozio</small></span><i class="sw"></i></div>
+        <div class="tg"><span>In evidenza in home<small>Sezione "Più amati: cosmetici"</small></span><i class="sw"></i></div>
+        <div class="tg"><span>Etichetta "Novità"</span><i class="sw"></i></div>
+      </div>
+      <div class="pane"><h2>Controllo etichetta</h2><div class="tl"><div><i id="c1"></i>Persona responsabile UE presente</div><div><i id="c2"></i>Avvertenze e modo d'uso in italiano</div><div><i id="c3"></i>INCI inserito</div></div></div>
+    </div>
+  </div>
+</main></div>
+<script>shell('prod','Siero illuminante vitamina C','Prodotti › Cosmetici › Modifica','<span class="b g hide-m">Vedi nel negozio</span><span class="b">Salva modifiche</span>');fill('c1',ICON.check);fill('c2',ICON.check);fill('c3',ICON.check);</script></body></html>
