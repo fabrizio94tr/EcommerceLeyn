@@ -1,10 +1,17 @@
 import type { Metadata, Viewport } from 'next';
-import { Bodoni_Moda, Manrope } from 'next/font/google';
+import localFont from 'next/font/local';
 import './globals.css';
 import { SITE_URL } from '@/lib/env';
 
-const bodoni = Bodoni_Moda({ subsets: ['latin'], weight: ['500', '600', '700'], variable: '--font-bodoni', display: 'swap' });
-const manrope = Manrope({ subsets: ['latin'], weight: ['400', '500', '600', '700', '800'], variable: '--font-manrope', display: 'swap' });
+// Font ospitati nel progetto (licenza OFL): nessun download da Google durante la build.
+const bodoni = localFont({
+  src: [{ path: './fonts/bodoni-moda-latin-wght-normal.woff2', weight: '400 900' }],
+  variable: '--font-bodoni', display: 'swap', fallback: ['Didot', 'Georgia', 'serif']
+});
+const manrope = localFont({
+  src: [{ path: './fonts/manrope-latin-wght-normal.woff2', weight: '200 800' }],
+  variable: '--font-manrope', display: 'swap', fallback: ['system-ui', 'sans-serif']
+});
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
