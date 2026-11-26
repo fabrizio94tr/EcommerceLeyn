@@ -37,13 +37,14 @@ export default async function ProductPage({ params }: Props) {
     }))
   };
   const desc = p.description.split(/\n{2,}/);
+  const routine = (p.routine || '').split('\n').map((l) => l.trim()).filter(Boolean).map((l) => { const [t, ...d] = l.split(':'); const dd = d.join(':').trim(); return { t: t.trim(), d: dd.charAt(0).toUpperCase() + dd.slice(1) }; });
 
   return (
     <div className="wrap">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <div className="crumb"><Link href="/">Home</Link> <I.chev /> <Link href={macroHref}>{p.category?.macro === 'cosmetici' ? 'Cosmetici' : 'Abbigliamento'}</Link>{p.category && <> <I.chev /> <Link href={`${macroHref}?sub=${p.category.slug}`}>{p.category.name}</Link></>} <I.chev /> <b>{p.name}</b></div>
       <div className="pdp">
-        <Gallery images={p.images || []} name={p.name} />
+        <Gallery images={p.images || []} name={p.name} productId={p.id} wished={wish.has(p.id)} />
         <div className="pinfo">
           <span className="k">{p.category?.name}{p.is_new ? ' · Novità' : ''}</span>
           <h1 className="H">{p.name}</h1>
@@ -54,23 +55,26 @@ export default async function ProductPage({ params }: Props) {
             {!isCos && <span><I.ret />Reso o cambio taglia entro 14 giorni</span>}
           </div>
           <div className="acc">
-            <details open><summary>Descrizione <I.down width={20} height={20} /></summary><div className="ab">{desc.map((d, i) => <p key={i}>{d}</p>)}</div></details>
-            {!isCos && (p.material || p.fit || p.care) && <details open><summary>Composizione e lavaggio <I.down width={20} height={20} /></summary><div className="ab"><dl>
+            <details open><summary>Descrizione <span className="pm" aria-hidden /></summary><div className="ab">{desc.map((d, i) => <p key={i}>{d}</p>)}</div></details>
+            {!isCos && (p.material || p.fit || p.care) && <details open><summary>Composizione e lavaggio <span className="pm" aria-hidden /></summary><div className="ab"><dl>
               {p.material && <><dt>Tessuto</dt><dd>{p.material}</dd></>}{p.fit && <><dt>Vestibilità</dt><dd>{p.fit}</dd></>}{p.care && <><dt>Lavaggio</dt><dd>{p.care}</dd></>}
             </dl></div></details>}
-            {isCos && p.usage && <details open><summary>Modo d&apos;uso <I.down width={20} height={20} /></summary><div className="ab"><p>{p.usage}</p></div></details>}
-            {isCos && p.inci && <details open><summary>Ingredienti (INCI) <I.down width={20} height={20} /></summary><div className="ab"><p className="inci">{p.inci}</p></div></details>}
-            {isCos && <details><summary>Informazioni di sicurezza <I.down width={20} height={20} /></summary><div className="ab"><dl>
+            {isCos && p.usage && <details open><summary>Modo d&apos;uso <span className="pm" aria-hidden /></summary><div className="ab"><p>{p.usage}</p></div></details>}
+            {isCos && p.inci && <details open><summary>Ingredienti (INCI) <span className="pm" aria-hidden /></summary><div className="ab"><p className="inci">{p.inci}</p></div></details>}
+            {isCos && <details><summary>Informazioni di sicurezza <span className="pm" aria-hidden /></summary><div className="ab"><dl>
               {p.variants?.some((v) => v.format) && <><dt>Contenuto</dt><dd>{[...new Set(p.variants.map((v) => v.format).filter(Boolean))].join(' · ')}</dd></>}
               {p.pao_months && <><dt>Dopo l&apos;apertura</dt><dd>Usare entro {p.pao_months} mesi</dd></>}
               {p.warnings && <><dt>Avvertenze</dt><dd>{p.warnings}</dd></>}
               {p.origin_country && <><dt>Paese di origine</dt><dd>{p.origin_country}</dd></>}
             </dl></div></details>}
-            <details><summary>Spedizioni, resi e cambi <I.down width={20} height={20} /></summary><div className="ab"><p>Spedizione con corriere espresso in 24/48 ore lavorative, {eur(settings.shipping_flat_cents)} o gratuita sopra {eur(settings.free_shipping_threshold_cents)}. Puoi chiedere un reso o un cambio entro 14 giorni dalla consegna dalla tua area cliente. <Link href="/spedizioni-e-resi" style={{ textDecoration: 'underline' }}>Tutti i dettagli</Link></p></div></details>
+            <details><summary>Spedizioni, resi e cambi <span className="pm" aria-hidden /></summary><div className="ab"><p>Spedizione con corriere espresso in 24/48 ore lavorative, {eur(settings.shipping_flat_cents)} o gratuita sopra {eur(settings.free_shipping_threshold_cents)}. Puoi chiedere un reso o un cambio entro 14 giorni dalla consegna dalla tua area cliente. <Link href="/spedizioni-e-resi" style={{ textDecoration: 'underline' }}>Tutti i dettagli</Link></p></div></details>
           </div>
           {isCos && p.eu_responsible_person && <div className="rp"><I.leaf /><span><b>Persona responsabile UE:</b> {p.eu_responsible_person}{p.origin_country ? <> · <b>Paese di origine:</b> {p.origin_country}</> : null} · Etichetta e avvertenze in italiano (Reg. CE 1223/2009).</span></div>}
         </div>
       </div>
+      {isCos && p.routine && <section className="howto"><div className="sec-h"><h2 className="H">La routine in {routine.length} passi</h2></div><div className="g">
+        {routine.map((r, i) => <div className="step" key={i}><span className="n">{i + 1}</span><h3 className="H">{r.t}</h3>{r.d && <p>{r.d}</p>}</div>)}
+      </div></section>}
       {related.filter((r) => r.id !== p.id).length > 0 && (
         <section className="shelf" style={{ paddingTop: 10 }}>
           <div className="sec-h"><h2 className="H">Ultimi arrivi</h2><Link className="lnk" href={macroHref}>Vedi tutti</Link></div>

@@ -64,7 +64,8 @@ export async function saveProduct(_: ActionState, fd: FormData): Promise<ActionS
     material: str(fd.get('material')), fit: str(fd.get('fit')), care: str(fd.get('care')),
     inci: str(fd.get('inci')), usage: str(fd.get('usage')), warnings: str(fd.get('warnings')),
     pao_months: fd.get('pao_months') ? Number(fd.get('pao_months')) || null : null, origin_country: str(fd.get('origin_country')), eu_responsible_person: str(fd.get('eu_responsible_person')),
-    seo_title: str(fd.get('seo_title')), seo_description: str(fd.get('seo_description'))
+    seo_title: str(fd.get('seo_title')), seo_description: str(fd.get('seo_description')),
+    claims: str(fd.get('claims')), routine: str(fd.get('routine'))
   };
   if (row.compare_at_cents != null && row.compare_at_cents <= price) row.compare_at_cents = null;
 
@@ -269,7 +270,7 @@ export async function saveSettings(_: ActionState, fd: FormData): Promise<Action
   const flat = cents(fd.get('shipping_flat')), free = cents(fd.get('free_threshold'));
   const pct = Math.round(Number(fd.get('welcome_pct')));
   if (flat == null || free == null || !(pct > 0 && pct <= 50)) return { error: 'Controlla i valori inseriti.' };
-  await supabaseAdmin().from('settings').update({ shipping_flat_cents: flat, free_shipping_threshold_cents: free, welcome_discount_percent: pct, admin_email: str(fd.get('admin_email')), default_low_stock: Number(fd.get('default_low_stock')) || 2, updated_at: new Date().toISOString() }).eq('id', 1);
+  await supabaseAdmin().from('settings').update({ shipping_flat_cents: flat, free_shipping_threshold_cents: free, welcome_discount_percent: pct, admin_email: str(fd.get('admin_email')), instagram_url: str(fd.get('instagram_url')), tiktok_url: str(fd.get('tiktok_url')), facebook_url: str(fd.get('facebook_url')), default_low_stock: Number(fd.get('default_low_stock')) || 2, updated_at: new Date().toISOString() }).eq('id', 1);
   refresh('/admin/promozioni');
   return { ok: true, message: 'Impostazioni salvate.' };
 }
@@ -279,7 +280,7 @@ export async function saveBanner(_: ActionState, fd: FormData): Promise<ActionSt
   const title = str(fd.get('title')), image_url = str(fd.get('image_url'));
   if (!title || !image_url) return { error: 'Servono titolo e immagine.' };
   const d = (k: string) => { const v = str(fd.get(k)); return v ? new Date(v).toISOString() : null; };
-  const row = { title, image_url, kicker: str(fd.get('kicker')), subtitle: str(fd.get('subtitle')), link: str(fd.get('link')), cta: str(fd.get('cta')), starts_at: d('starts_at'), ends_at: d('ends_at'), sort: Number(fd.get('sort')) || 0, active: fd.get('active') === 'on' };
+  const row = { title, image_url, image2_url: str(fd.get('image2_url')), promo_code: str(fd.get('promo_code'))?.toUpperCase() ?? null, kicker: str(fd.get('kicker')), subtitle: str(fd.get('subtitle')), link: str(fd.get('link')), cta: str(fd.get('cta')), starts_at: d('starts_at'), ends_at: d('ends_at'), sort: Number(fd.get('sort')) || 0, active: fd.get('active') === 'on' };
   const id = str(fd.get('id'));
   const { error } = id ? await supabaseAdmin().from('banners').update(row).eq('id', id) : await supabaseAdmin().from('banners').insert(row);
   if (error) return { error: 'Salvataggio non riuscito.' };

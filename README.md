@@ -37,7 +37,7 @@ barra spedizione gratuita, prodotti correlati, carrello abbandonato, ecc.
 npm install
 npx supabase start            # serve Docker; applica supabase/migrations
 cp .env.example .env.local    # e incolla URL e chiavi stampate da "supabase start"
-node --env-file=.env.local scripts/seed-demo.mjs     # catalogo di esempio
+psql "$DB_URL" -f supabase/demo/demo-seed.sql       # catalogo di esempio (foto Unsplash)
 npm run dev
 ```
 Registrati su http://localhost:3000/registrati, poi: `node --env-file=.env.local scripts/make-admin.mjs tua@email.it`.
@@ -58,7 +58,8 @@ Registrati su http://localhost:3000/registrati, poi: `node --env-file=.env.local
 4. **PayPal**: app REST live su developer.paypal.com → `PAYPAL_CLIENT_ID`, `PAYPAL_CLIENT_SECRET`, `PAYPAL_ENV=live`.
 5. **Resend**: verifica il dominio alanabeauty.it (record DNS) → `RESEND_API_KEY`, `EMAIL_FROM`, `ADMIN_EMAIL`.
 6. Crea l'account di Layne dal sito e rendilo amministratore con `scripts/make-admin.mjs`.
-7. Carica categorie e prodotti veri (o importa da Excel), poi elimina i prodotti dimostrativi se li avevi caricati.
+7. Carica categorie e prodotti veri (o importa da Excel). Il catalogo dimostrativo si toglie con `supabase/demo/demo-remove.sql`
+   (SQL editor di Supabase); si rigenera con `node scripts/make-demo-seed.mjs`.
 
 ## Note tecniche
 

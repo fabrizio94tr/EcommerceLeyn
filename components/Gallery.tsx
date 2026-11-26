@@ -2,8 +2,9 @@
 import Image from 'next/image';
 import { useState } from 'react';
 import type { ProductImage } from '@/lib/types';
+import { WishButton } from './WishButton';
 
-export function Gallery({ images, name }: { images: ProductImage[]; name: string }) {
+export function Gallery({ images, name, productId, wished }: { images: ProductImage[]; name: string; productId: string; wished: boolean }) {
   const [i, setI] = useState(0);
   const cur = images[i];
   return (
@@ -14,6 +15,7 @@ export function Gallery({ images, name }: { images: ProductImage[]; name: string
         </button>))}</div>}
       <div className="main">
         {cur && <Image src={cur.url} alt={cur.alt || name} fill priority sizes="(max-width:600px) 100vw, 55vw" style={{ objectFit: 'cover' }} />}
+        <WishButton productId={productId} initial={wished} />
         {images.length > 1 && <span className="gdots">{images.map((im, k) => <i key={im.id} className={k === i ? 'on' : ''} onClick={() => setI(k)} />)}</span>}
       </div>
     </div>

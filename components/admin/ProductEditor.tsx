@@ -46,6 +46,8 @@ export function ProductEditor({ p, categories, waiting, defaultLow }: { p?: Prod
             <label className="f">Modo d&apos;uso<textarea name="usage" defaultValue={p?.usage || ''} /></label>
             <label className="f">Avvertenze<textarea name="warnings" defaultValue={p?.warnings || ''} /></label>
             <div className="grid2"><label className="f">Dopo l&apos;apertura (mesi, PAO)<input name="pao_months" type="number" min={1} defaultValue={p?.pao_months || ''} /></label><label className="f">Paese di origine<input name="origin_country" defaultValue={p?.origin_country || ''} /></label></div>
+            <label className="f">Punti forti (separati da virgola)<input name="claims" defaultValue={p?.claims || ''} placeholder="Tutti i tipi di pelle, Senza parabeni, Dermatologicamente testato" /><small>Solo ciò che è scritto in etichetta o dimostrato dal fornitore.</small></label>
+            <label className="f">Routine consigliata (una riga per passo: Titolo: testo)<textarea name="routine" defaultValue={p?.routine || ''} placeholder={'Detergi: gel detergente, mattina e sera\nTratta: 3-4 gocce di siero\nIdrata: crema idratante'} /></label>
             <label className="f">Persona responsabile UE (nome e indirizzo in etichetta)<input name="eu_responsible_person" defaultValue={p?.eu_responsible_person || ''} /><small>Obbligatoria per vendere in Italia: se in etichetta manca, non pubblicare il prodotto.</small></label>
           </div>}
           <div className="pane"><h2>{isCos ? 'Formati, prezzi e giacenze' : 'Varianti e giacenze'} <small>i pezzi scendono da soli a ogni ordine</small></h2>

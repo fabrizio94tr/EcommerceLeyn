@@ -1,10 +1,13 @@
 'use client';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import { subscribeNewsletter } from '@/app/actions';
 import { Msg, Submit, useForm } from './forms';
 
 export function Newsletter({ pct }: { pct: number }) {
   const [state, action] = useForm(subscribeNewsletter);
+  const path = usePathname();
+  if (/^\/(account|checkout|carrello|ordine)/.test(path)) return null;
   return (
     <section className="news"><div className="wrap"><div className="nbox">
       <div className="ntx"><span className="k">Newsletter</span><h2 className="H">Iscriviti e ricevi il {pct}% sul primo ordine</h2><p>Novità, consigli beauty e promo riservate. Ti cancelli quando vuoi.</p></div>

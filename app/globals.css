@@ -1026,3 +1026,32 @@ textarea.inp{height:auto;min-height:110px;padding:14px 18px;line-height:1.5;resi
 
 @media (max-width:1000px){.adm .sb a.logo{display:flex}}
 @media (max-width:1000px){.adm .app{grid-template-rows:auto 1fr;min-height:100vh}}
+
+/* ===== allineamento alla proposta Noir Editorial ===== */
+.hbox .hi .h1,.hbox .hi .h2{position:relative;display:block;min-height:100%}
+.hbox .hi .h2{display:block}
+.sec-h .tabs{display:flex;gap:8px;margin-left:auto;margin-right:24px}
+.sec-h .tabs button span{display:inline-block;padding:8px 16px;font-weight:700;font-size:13px;box-shadow:inset 0 0 0 1.5px var(--line)}
+.sec-h .tabs button span.on{background:var(--ink);color:var(--bg);box-shadow:none}
+.band .btn.lnkbtn{background:transparent;color:#fff;padding:0;min-height:0;margin-top:4px;text-decoration:underline;text-underline-offset:6px}
+.band .code{letter-spacing:.2em}
+.mtile .subs span{display:inline-block}
+@media (max-width:1000px){.hbox .hi .h2{display:none}.sec-h .tabs{display:none}}
+@media (max-width:600px){.hbox .hi .h1{height:420px}}
+.acc summary .pm{width:20px;height:20px;position:relative;flex-shrink:0}
+.acc summary .pm::before,.acc summary .pm::after{content:"";position:absolute;left:3px;right:3px;top:9px;height:1.8px;background:currentColor}
+.acc summary .pm::after{transform:rotate(90deg)}
+.acc details[open] summary .pm::after{display:none}
+.acc summary::-webkit-details-marker{display:none}
+.pinfo .price .upr{font-size:13px;color:var(--muted)}
+.pinfo .sizes.ask button:not(.on){box-shadow:inset 0 0 0 1.5px var(--sale)}
+.gal .main .wish{z-index:2;cursor:pointer}
+.gal .main .wish.on{color:var(--sale)}
+.fil a.chk{cursor:pointer}
+.fil .chk i.on{background:var(--ink);box-shadow:none;color:#fff}
+.fil .chk i.on svg{width:14px;height:14px}
+.wallet button{height:50px;display:grid;place-items:center;font-weight:800;font-size:15px;background:#0E0E0E;color:#fff;cursor:pointer}
+.wallet button.pp{background:#FFC439;color:#152B5C}
+.wallet button.gp{background:#fff;color:#202124;box-shadow:inset 0 0 0 1px #C9C9C9}
+.seg2 a{flex:1;text-align:center;padding:12px;box-shadow:inset 0 0 0 1.5px var(--line);font-weight:700;font-size:14.5px}
+.sum .li .lq{margin-top:4px}

@@ -11,7 +11,7 @@ export default async function ShopLayout({ children }: { children: React.ReactNo
     <CartProvider>
       <Header categories={categories} freeShipping={eur(settings.free_shipping_threshold_cents)} wishCount={wish.size} loggedIn={!!user} />
       <main>{children}</main>
-      <Footer pct={settings.welcome_discount_percent} />
+      <Footer pct={settings.welcome_discount_percent} social={{ instagram_url: settings.instagram_url, tiktok_url: settings.tiktok_url, facebook_url: settings.facebook_url }} />
       <CookieBanner />
     </CartProvider>
   );

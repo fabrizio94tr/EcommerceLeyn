@@ -13,10 +13,10 @@ export interface Product {
   price_cents: number; compare_at_cents: number | null; cost_cents: number | null; published: boolean; featured: boolean; is_new: boolean;
   material: string | null; fit: string | null; care: string | null;
   inci: string | null; usage: string | null; warnings: string | null; pao_months: number | null; origin_country: string | null; eu_responsible_person: string | null;
-  seo_title: string | null; seo_description: string | null; created_at: string; updated_at: string;
+  seo_title: string | null; seo_description: string | null; claims: string | null; routine: string | null; created_at: string; updated_at: string;
   category?: Category | null; images?: ProductImage[]; variants?: Variant[];
 }
-export interface Settings { shipping_flat_cents: number; free_shipping_threshold_cents: number; welcome_discount_percent: number; default_low_stock: number; admin_email: string | null }
+export interface Settings { shipping_flat_cents: number; free_shipping_threshold_cents: number; welcome_discount_percent: number; default_low_stock: number; admin_email: string | null; instagram_url?: string | null; tiktok_url?: string | null; facebook_url?: string | null }
 export interface Coupon {
   id: string; code: string; kind: 'percent' | 'fixed'; value: number; min_order_cents: number; applies_to: 'all' | Macro;
   starts_at: string | null; ends_at: string | null; active: boolean; once_per_customer: boolean; max_uses: number | null; usage_count: number; is_welcome: boolean;
@@ -38,4 +38,4 @@ export interface BlogPost {
   id: string; title: string; slug: string; excerpt: string | null; body: string; cover_url: string | null; category: string | null;
   seo_title: string | null; seo_description: string | null; published: boolean; show_home: boolean; published_at: string | null; created_at: string;
 }
-export interface Banner { id: string; kicker: string | null; title: string; subtitle: string | null; image_url: string; link: string | null; cta: string | null }
+export interface Banner { id: string; kicker: string | null; title: string; subtitle: string | null; image_url: string; image2_url: string | null; promo_code: string | null; link: string | null; cta: string | null }

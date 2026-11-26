@@ -5,12 +5,13 @@ import { ProductCard } from '@/components/ProductCard';
 import { AddressCard, NewAddress, ProfileForm, ReturnForm } from '@/components/AccountForms';
 import { PRODUCT_SELECT, normalize } from '@/lib/data';
 import { eur, dateIt, ORDER_STATUS, RETURN_STATUS } from '@/lib/format';
+import { I } from '@/components/icons';
 import type { Order, OrderItem, Product } from '@/lib/types';
 
 export const metadata = { title: 'Il mio account', robots: { index: false } };
 export const dynamic = 'force-dynamic';
 
-const TABS = [['ordini', 'I miei ordini'], ['resi', 'Resi e cambi'], ['preferiti', 'Preferiti'], ['indirizzi', 'Indirizzi'], ['dati', 'Dati personali']] as const;
+const TABS = [['ordini', 'I miei ordini'], ['resi', 'Resi e cambi'], ['preferiti', 'Preferiti'], ['indirizzi', 'Indirizzi'], ['dati', 'Dati e newsletter']] as const;
 
 export default async function Account({ searchParams }: { searchParams: Promise<{ tab?: string; inviata?: string }> }) {
   const { user, sb } = await requireUser('/account');
@@ -56,6 +57,22 @@ export default async function Account({ searchParams }: { searchParams: Promise<
               </div>
             );
           })}</div> : <div className="rbox"><p>Non hai ancora ordini. <Link href="/novita" style={{ textDecoration: 'underline' }}>Scopri le novità</Link></p></div>)}
+
+          {tab === 'ordini' && <>
+            <div className="two">
+              {(() => {
+                const r = (returns ?? []).find((x) => ['requested', 'approved', 'received'].includes(x.status));
+                if (!r) return <div className="rbox"><h3>Resi e cambi</h3><p>Puoi chiedere un reso o un cambio taglia entro 14 giorni dalla consegna, dal pulsante sotto l&apos;ordine.</p></div>;
+                const steps: [string, boolean][] = [['Richiesta inviata · ' + dateIt(r.created_at, { day: 'numeric', month: 'short' }), true], ['Approvata · istruzioni via email', ['approved', 'received'].includes(r.status)], ['Pacco ricevuto da noi', r.status === 'received'], [r.type === 'exchange' ? 'Nuova taglia spedita' : 'Rimborso effettuato', false]];
+                return <div className="rbox"><h3>{r.type === 'exchange' ? 'Cambio' : 'Reso'} in corso · {(r.order as { number: string })?.number}</h3><p>{r.reason}</p>
+                  {steps.map(([l, done]) => <span key={l} className={`rstep${done ? '' : ' no'}`}><i>{done && <I.check />}</i>{l}</span>)}</div>;
+              })()}
+              <div className="rbox"><h3>Indirizzi salvati <Link href="/account?tab=indirizzi"><small>{(addrs ?? []).length ? 'Gestisci' : 'Aggiungi'}</small></Link></h3>
+                {(addrs ?? []).length ? (addrs ?? []).slice(0, 2).map((a) => <p key={a.id}><b>{a.label || 'Indirizzo'}{a.is_default ? ' (predefinito)' : ''}</b><br />{a.line1}, {a.postal_code} {a.city}</p>) : <p>Salva un indirizzo per pagare più in fretta.</p>}</div>
+            </div>
+            {wishProducts.length > 0 && <div><div className="sec-h" style={{ marginBottom: 16 }}><h2 className="H" style={{ fontSize: 30 }}>I tuoi preferiti</h2><Link className="lnk" href="/account?tab=preferiti">Vedi tutti ({wishProducts.length})</Link></div>
+              <div className="grid">{wishProducts.slice(0, 4).map((p) => <ProductCard key={p.id} p={p} wished />)}</div></div>}
+          </>}
 
           {tab === 'resi' && ((returns ?? []).length ? <div className="two">{(returns ?? []).map((r) => (
             <div className="rbox" key={r.id}><h3>{r.type === 'exchange' ? 'Cambio' : 'Reso'} {r.number} <span className={`st ${RETURN_STATUS[r.status].cls}`}>{RETURN_STATUS[r.status].label}</span></h3>

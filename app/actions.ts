@@ -86,7 +86,8 @@ export async function quoteCart(lines: CartLine[], coupon?: string | null, email
 /* ───────── checkout ───────── */
 const checkoutSchema = z.object({
   email: emailSchema,
-  full_name: z.string().trim().min(3, 'Inserisci nome e cognome.').max(120),
+  first_name: z.string().trim().min(1, 'Inserisci il nome.').max(60),
+  last_name: z.string().trim().min(1, 'Inserisci il cognome.').max(60),
   line1: z.string().trim().min(4, 'Inserisci l\'indirizzo.').max(160),
   line2: z.string().trim().max(160).optional().default(''),
   postal_code: z.string().trim().regex(/^\d{5}$/, 'Il CAP deve avere 5 cifre.'),
@@ -104,7 +105,7 @@ const checkoutSchema = z.object({
 export async function startCheckout(_: ActionState, fd: FormData): Promise<ActionState> {
   const parsed = checkoutSchema.safeParse(Object.fromEntries(fd));
   if (!parsed.success) return { error: parsed.error.issues[0].message };
-  const f = parsed.data;
+  const f = { ...parsed.data, full_name: `${parsed.data.first_name} ${parsed.data.last_name}` };
   let cart: CartLine[];
   try { cart = z.array(z.object({ variantId: z.string().uuid(), qty: z.number().int().min(1).max(20) })).max(50).parse(JSON.parse(f.cart)); }
   catch { return { error: 'Il carrello non è valido, ricarica la pagina.' }; }

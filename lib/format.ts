@@ -1,7 +1,18 @@
 import type { Variant } from './types';
 
+// Formato della proposta grafica: "€ 64,90"
 export const eur = (cents: number) =>
-  new Intl.NumberFormat('it-IT', { style: 'currency', currency: 'EUR' }).format(cents / 100);
+  `€ ${new Intl.NumberFormat('it-IT', { minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(cents / 100)}`;
+
+/** Prezzo per litro o per kg (obbligatorio per i cosmetici venduti a volume/peso). */
+export function unitPrice(cents: number, format: string | null | undefined) {
+  const m = format?.replace(',', '.').match(/^\s*([\d.]+)\s*(ml|l|g|kg)\b/i);
+  if (!m) return null;
+  const n = parseFloat(m[1]), u = m[2].toLowerCase();
+  if (!n) return null;
+  const base = u === 'ml' ? n / 1000 : u === 'g' ? n / 1000 : n;
+  return `${eur(Math.round(cents / base))} / ${u === 'ml' || u === 'l' ? 'litro' : 'kg'}`;
+}
 
 export const dateIt = (d: string | Date, opts: Intl.DateTimeFormatOptions = { day: 'numeric', month: 'short', year: 'numeric' }) =>
   new Intl.DateTimeFormat('it-IT', { ...opts, timeZone: 'Europe/Rome' }).format(new Date(d));

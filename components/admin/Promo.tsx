@@ -15,6 +15,8 @@ export function SettingsForm({ s }: { s: Settings }) {
       <div className="grid2"><label className="f">Spedizione (€)<input name="shipping_flat" defaultValue={money(s.shipping_flat_cents)} inputMode="decimal" /></label><label className="f">Gratis sopra (€)<input name="free_threshold" defaultValue={money(s.free_shipping_threshold_cents)} inputMode="decimal" /></label></div>
       <div className="grid2"><label className="f">Sconto di benvenuto newsletter (%)<input name="welcome_pct" type="number" min={1} max={50} defaultValue={s.welcome_discount_percent} /></label><label className="f">Scorta minima per i nuovi prodotti<input name="default_low_stock" type="number" min={0} defaultValue={s.default_low_stock} /></label></div>
       <label className="f">Email per gli avvisi (nuovi ordini, scorte, resi)<input name="admin_email" type="email" defaultValue={s.admin_email || ''} /></label>
+      <div className="grid2"><label className="f">Instagram (link)<input name="instagram_url" type="url" defaultValue={s.instagram_url || ''} placeholder="https://instagram.com/…" /></label><label className="f">TikTok (link)<input name="tiktok_url" type="url" defaultValue={s.tiktok_url || ''} /></label></div>
+      <label className="f">Facebook (link)<input name="facebook_url" type="url" defaultValue={s.facebook_url || ''} /></label>
       <Note s={st} /><Save>Salva impostazioni</Save>
     </form>
   );
@@ -54,17 +56,18 @@ export function CouponRow({ c }: { c: Coupon }) {
   );
 }
 
-type B = { id: string; kicker: string | null; title: string; subtitle: string | null; image_url: string; link: string | null; cta: string | null; starts_at: string | null; ends_at: string | null; active: boolean; sort: number };
+type B = { id: string; kicker: string | null; title: string; subtitle: string | null; image_url: string; image2_url: string | null; promo_code: string | null; link: string | null; cta: string | null; starts_at: string | null; ends_at: string | null; active: boolean; sort: number };
 export function BannerForm({ b, onDone }: { b?: B; onDone?: () => void }) {
   const [st, action] = useActionState(saveBanner, null);
   const dt = (d: string | null) => (d ? new Date(d).toISOString().slice(0, 16) : '');
   return (
     <form action={action} style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
       {b && <input type="hidden" name="id" value={b.id} />}
-      <SingleImage name="image_url" initial={b?.image_url} />
+      <div className="grid2"><div className="f">Foto principale<SingleImage name="image_url" initial={b?.image_url} /></div><div className="f">Seconda foto (facoltativa, solo nel banner grande)<SingleImage name="image2_url" initial={b?.image2_url} /></div></div>
       <div className="grid2"><label className="f">Occhiello<input name="kicker" defaultValue={b?.kicker || ''} placeholder="Nuova collezione" /></label><label className="f">Ordine (1 = in alto)<input name="sort" type="number" defaultValue={b?.sort ?? 1} /></label></div>
       <label className="f">Titolo<input name="title" required defaultValue={b?.title} /></label>
       <label className="f">Testo<input name="subtitle" defaultValue={b?.subtitle || ''} /></label>
+      <label className="f">Codice promo da mostrare (facoltativo)<input name="promo_code" defaultValue={b?.promo_code || ''} placeholder="SKIN20" style={{ textTransform: 'uppercase' }} /></label>
       <div className="grid2"><label className="f">Testo del pulsante<input name="cta" defaultValue={b?.cta || ''} placeholder="Scopri" /></label><label className="f">Link<input name="link" defaultValue={b?.link || ''} placeholder="/promo" /></label></div>
       <div className="grid2"><label className="f">Dal<input name="starts_at" type="datetime-local" defaultValue={dt(b?.starts_at ?? null)} /></label><label className="f">Al<input name="ends_at" type="datetime-local" defaultValue={dt(b?.ends_at ?? null)} /></label></div>
       <label className="tgl"><span>Attivo</span><input type="checkbox" name="active" defaultChecked={b ? b.active : true} /></label>

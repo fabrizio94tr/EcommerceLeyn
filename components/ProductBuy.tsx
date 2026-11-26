@@ -6,7 +6,8 @@ import { I } from './icons';
 import { WishButton } from './WishButton';
 import { Msg, Submit, useForm } from './forms';
 import { joinWaitlist } from '@/app/actions';
-import { eur, sortSizes } from '@/lib/format';
+import { eur, sortSizes, unitPrice } from '@/lib/format';
+import { I as Icons } from './icons';
 import type { Product, Variant } from '@/lib/types';
 
 export function ProductBuy({ p, wished }: { p: Product; wished: boolean }) {
@@ -40,7 +41,9 @@ export function ProductBuy({ p, wished }: { p: Product; wished: boolean }) {
       <div className={`price${p.compare_at_cents && p.compare_at_cents > price ? ' sale' : ''}`}>
         <b>{eur(price)}</b>
         {p.compare_at_cents && p.compare_at_cents > price && <><s>{eur(p.compare_at_cents)}</s><em>-{Math.round((1 - price / p.compare_at_cents) * 100)}%</em></>}
+        {p.type === 'cosmetic' && unitPrice(price, selected?.format) && <span className="upr">{unitPrice(price, selected?.format)}</span>}
       </div>
+      {p.claims && <div className="claims">{p.claims.split(',').map((c) => c.trim()).filter(Boolean).map((c) => <span key={c}><Icons.check />{c}</span>)}</div>}
 
       {colors.length > 0 && <div className="opt"><b>Colore: {color} <span>{colors.length > 1 ? `${colors.length} colori` : ''}</span></b>
         <div className="cols">{colors.map(([name, hex]) => <button key={name} type="button" className={color === name ? 'on' : ''} style={{ background: hex || '#ddd' }} aria-label={name} aria-pressed={color === name} onClick={() => setColor(name)} />)}</div></div>}
@@ -70,7 +73,7 @@ export function ProductBuy({ p, wished }: { p: Product; wished: boolean }) {
 
       <div className="buy">
         <span className="qty"><button type="button" aria-label="Meno" onClick={() => setQty((q) => Math.max(1, q - 1))}><I.minus width={20} height={20} /></button>{qty}<button type="button" aria-label="Più" onClick={() => setQty((q) => Math.min(q + 1, selected?.stock || 1, 20))}><I.plus width={20} height={20} /></button></span>
-        <button type="button" className="btn" disabled={needSize || !selected || out} onClick={add}><I.bag />{needSize ? 'Scegli la taglia' : out ? 'Esaurito' : added ? 'Aggiunto!' : 'Aggiungi al carrello'}</button>
+        <button type="button" className={`btn${needSize ? ' need' : ''}`} disabled={!needSize && (!selected || out)} onClick={() => { if (needSize) { document.querySelector('.pinfo .sizes')?.classList.add('ask'); return; } add(); }}><I.bag />{needSize ? 'Scegli la taglia' : out ? 'Esaurito' : added ? 'Aggiunto!' : 'Aggiungi al carrello'}</button>
         <WishButton productId={p.id} initial={wished} className="wbtn" />
       </div>
       {added && <p className="okmsg" role="status">Aggiunto al carrello. <Link href="/carrello" style={{ textDecoration: 'underline' }}>Vai al carrello</Link></p>}

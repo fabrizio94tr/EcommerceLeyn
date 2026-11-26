@@ -31,10 +31,10 @@ export default async function Post({ params }: Props) {
   return (
     <div className="wrap">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(ld) }} />
-      <div className="art-h"><span className="k">Beauty blog{post.category ? ` · ${post.category}` : ''}</span><h1 className="H">{post.title}</h1>{post.excerpt && <p>{post.excerpt}</p>}<span className="by">Alana Beauty{post.published_at ? ` · ${dateIt(post.published_at)}` : ''}</span></div>
+      <div className="art-h"><span className="k">Beauty blog{post.category ? ` · ${post.category}` : ''}</span><h1 className="H">{post.title}</h1>{post.excerpt && <p>{post.excerpt}</p>}<span className="by"><i aria-hidden />Layne · {Math.max(2, Math.round(post.body.split(/\s+/).length / 200))} minuti di lettura{post.published_at ? ` · ${dateIt(post.published_at)}` : ''}</span></div>
       {post.cover_url && <div className="art-img" style={{ position: 'relative' }}><Image src={post.cover_url} alt="" fill priority sizes="100vw" style={{ objectFit: 'cover' }} /></div>}
       <div className="art">
-        <nav className="toc">{toc.length > 0 && <><b>In questo articolo</b>{toc.map((t) => <span key={t}>{t}</span>)}</>}</nav>
+        <nav className="toc">{toc.length > 0 && <><b>In questo articolo</b>{toc.map((t, i) => <span key={t} className={i === 0 ? 'on' : ''}>{t}</span>)}</>}</nav>
         <div className="body body-md">{blocks.map((b, i) => {
           if (b.kind === 'html') return <div key={i} dangerouslySetInnerHTML={{ __html: b.html }} />;
           const p = bySlug.get(b.slug);
